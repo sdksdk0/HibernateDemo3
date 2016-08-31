@@ -1,0 +1,29 @@
+<?xml version="1.0"  encoding="UTF-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class  name="cn.tf.domain2.Course"  table="t_course"  >
+		<id name="cid"  >
+			<generator class="native"></generator>
+		</id>
+		<property name="content"></property>
+		<property name="teacher"></property>
+		
+		<!-- 多对多
+			确定中间表的表名
+			当前表在中间表对应的名称
+			确定容器中另一个对象,class来确定另一个对象的类型,column确定的是另一个表对应的外键名称
+		 -->
+		<set name="studentSet"  table="t_student_course"  inverse="true">
+			<key column="course_id"></key>
+			<many-to-many class="cn.tf.domain2.Student"   column="student_id"></many-to-many>
+		</set>
+		
+		
+		
+	</class>
+</hibernate-mapping>
+
