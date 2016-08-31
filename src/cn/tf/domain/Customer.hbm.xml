@@ -1,0 +1,31 @@
+<?xml version="1.0"  encoding="UTF-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class  name="cn.tf.domain.Customer"  table="t_customer"  >
+		<id name="cid"  >
+			<generator class="native"></generator>
+		</id>
+		<property name="cname"></property>
+		
+		<!--  一个客户拥有多个订单，一对多  
+				Set:set
+				List:list
+				Map:map
+				Array:array
+				key:用来确定从表的
+				
+		-->
+		<set name="orderSet"  inverse="true">
+				<key column="customer_id"></key>
+				<one-to-many  class="cn.tf.domain.Order" />
+		
+		</set>
+		
+		
+	</class>
+</hibernate-mapping>
+

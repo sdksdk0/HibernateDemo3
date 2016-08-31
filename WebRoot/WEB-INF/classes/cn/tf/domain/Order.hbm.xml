@@ -1,0 +1,28 @@
+<?xml version="1.0"  encoding="UTF-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class  name="cn.tf.domain.Order"   table="t_order">
+		<id  name="oid">
+			<generator class="native"></generator>
+		</id>
+		<property name="price"></property>
+		
+		<!-- 多个订单属于一个客户
+			每一个映射文件都可以完整的描述对象之间的关系
+			column,确定从表外键
+		 -->
+		<many-to-one name="customer"   class="cn.tf.domain.Customer"   column="customer_id">
+			
+		</many-to-one>
+		
+	
+	</class>
+	
+	
+	
+</hibernate-mapping>
+
